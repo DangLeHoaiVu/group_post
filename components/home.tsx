@@ -6,12 +6,12 @@ function HomePage() {
 
     useEffect(() => {
         async function fetchMyInfor(fields: string) {
-            let token = await fetch(`https://graph.facebook.com/v21.0/oauth/authorize?client_id=${process.env.client_id}&scope=${process.env.scope}&response_type=token&redirect_uri=/`)
-            let accessToken = await token.json()
+            const token = await fetch(`https://graph.facebook.com/v21.0/oauth/authorize?client_id=${process.env.client_id}&scope=${process.env.scope}&response_type=token&redirect_uri=/`)
+            const accessToken = await token.json()
             console.log(accessToken);
 
-            let res = await fetch(`https://graph.facebook.com/me?fields=${fields}&access_token=${accessToken.access_token}`)
-            let data = await res.json()
+            const res = await fetch(`https://graph.facebook.com/me?fields=${fields}&access_token=${accessToken.access_token}`)
+            const data = await res.json()
             setMyInfor(data)
         }
 
